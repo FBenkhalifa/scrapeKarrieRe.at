@@ -1,10 +1,11 @@
 library(tidyverse)
 library(rvest)
+library(lubridate)
 
 
 # Set static variables ----------------------------------------------------
 
-extract_job_infos <- function(url){
+extract_job_infos <- function(url, wait = 4){
 
   # Set css classes of job features to extract
   JOB_FEATURES <- c(
@@ -24,8 +25,13 @@ extract_job_infos <- function(url){
   
   # Add company_link and job_link
   company_link <- job %>% html_nodes(".m-jobHeader__companyLink") %>% html_attr("href")
-  job_infos <- job_infos %>% add_column(company_link = paste0("https://www.karriere.at", company_link),
-                                        job_link = url)
+  job_infos <- job_infos %>% 
+    mutate(job_date =dmy(job_date),
+           company_link = paste0("https://www.karriere.at", company_link),
+           job_link = url)
+  
+  # Wait system sleep
+  Sys.sleep(rnorm(1, wait, 1.5))
   job_infos
 }
 
