@@ -1,6 +1,11 @@
-# Rendering markdown
+# Render markdown
 
  - Check out how to render markdowns in loop https://bookdown.org/yihui/rmarkdown-cookbook/rmarkdown-render.html#rmarkdown-render to create markdowns in a loop
  - Check out how to change fonts in markdown https://stackoverflow.com/questions/29274501/r-markdown-changing-font-size-and-font-type-in-html-output#:~:text=See%20Appearance%20and%20Style.&text=You%20can%20change%20the%20font,output%20of%20the%20HTML%20output.
  - Check out how to right justify parts of markdown https://stackoverflow.com/questions/50041549/how-to-justify-to-both-sides-text-in-r-markdown-when-knitting-in-pdf-output
  - Trail whitespace with str_squish from https://stringr.tidyverse.org/reference/str_trim.html
+ - Prepare folder structure as in https://www.r-bloggers.com/2014/11/copying-files-with-r/
+
+# Include company infos
+
+ - Check .m-jobDetailContent attr: data-company-slug = "hanusch-krankenhaus" in https://www.karriere.at/x/hanusch-krankenhaus?isSplitView=false
