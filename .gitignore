@@ -2,3 +2,10 @@
 .Rhistory
 .RData
 .Ruserdata
+/data
+*.csv
+motivation_letter.docx
+motivation_letter.html
+todos.txt
+/applications
+/application_docs
