@@ -21,13 +21,19 @@ write_excel_csv2(job_infos, "./jobs.csv")
 files <- list.files("./application_docs/", full.names = TRUE)
 
 # Write to directory
-for (job_n in c(1:nrow(job_infos[1:4, ]))){
+for (job_n in c(1:nrow(job_infos))){
   
   # Get job
-  job <- job_infos %>% slice(job_n)
+  job <- job_infos %>% slice(5)
   
   # Create directory
-  dir_name <- glue("./applications/{job$id}-{job$company}")
+  file_name <- stringi::stri_replace_all_fixed(
+    glue("{job$id}-{job$company}"), 
+    c("ä", "ö", "ü", "Ä", "Ö", "Ü"), 
+    c("ae", "oe", "ue", "Ae", "Oe", "Ue"), 
+    vectorize_all = FALSE
+  )
+  dir_name <- glue("./applications/{file_name}")
   dir.create(dir_name)
   
   # copy the files to the new folder
