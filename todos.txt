@@ -9,3 +9,12 @@
 # Include company infos
 
  - Check .m-jobDetailContent attr: data-company-slug = "hanusch-krankenhaus" in https://www.karriere.at/x/hanusch-krankenhaus?isSplitView=false
+
+# Use letter style
+ 
+ - Check out how to include letter styling as in https://en.wikibooks.org/wiki/LaTeX/Letters#The_letter_class
+ - Check out how to use other document class as in https://bookdown.org/yihui/rmarkdown/pdf-document.html#latex-options
+
+# Change font
+
+ - Change font style with https://babichmorrowc.github.io/post/changing-fonts-in-rmarkdown-pdfs/
