@@ -1,14 +1,20 @@
 library(glue)
+
+
+# Gather jobs -------------------------------------------------------------
+
 # Build urls
 jobs <- get_jobs_url()
 
 # Extract job infos
-job_infos <- jobs %>% map_dfr(extract_job_infos)
-job_infos <- job_infos %>% rowid_to_column("id")
+job_infos <- jobs %>% map_dfr(extract_job_infos) %>% rowid_to_column("id")
 # save(job_infos, file = "./data/job_infos.rda")
 
 # Write to excel
 write_excel_csv2(job_infos, "./jobs.csv")
+
+
+# Create directories ------------------------------------------------------
 
 
 # Find the application documents
@@ -27,12 +33,17 @@ for (job_n in c(1:nrow(job_infos[1:4, ]))){
   # copy the files to the new folder
   file.copy(files, dir_name)
 
-  
+    rmarkdown::render(
+      './rmd/motivation_letter_word.Rmd',
+      output_format= "word_document",
+      output_file = paste0(".", dir_name, '/motivation_letter.docx'),
+      params = list(company = job$company, job = job$job_title)
+    )
 
     rmarkdown::render(
-      'motivation_letter.Rmd',
+      './rmd/motivationsschreiben_word.Rmd',
       output_format= "word_document",
-      output_file = paste0(dir_name, '/motivation_letter.doc'),
+      output_file = paste0(".", dir_name, '/Anschreiben.docx'),
       params = list(company = job$company, job = job$job_title)
     )
 }
